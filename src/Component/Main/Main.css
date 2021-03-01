@@ -3,7 +3,6 @@
     transition: 0.3s;
     width: 30%;
     margin:10px;
-    height: 350px;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
