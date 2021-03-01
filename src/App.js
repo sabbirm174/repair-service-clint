@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React , {useEffect, useState} from "react"
+import "../node_modules/bootstrap/dist/css/bootstrap.css"
+import PlayerData from "./Component/PlayerData/PlayerData.json"
+import Main from "./Component/Main/Main"
+import Cart from './Component/Cart/Cart'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const [player, setPlayer] = useState([]);
+const [selectedPlayer, setSelectedPlayer] = useState([])
+
+useEffect(() => {
+setPlayer(PlayerData);
+}, [])
+
+const HandleClick=(player)=>{
+  const NewSelectedPlayer = [...selectedPlayer, player];
+  setSelectedPlayer(NewSelectedPlayer);
+  console.log(selectedPlayer)
+}
+
+return (
+        <div>
+            <Cart selectedPlayer={selectedPlayer}></Cart>
+            <span className="d-flex flex-wrap align-items-center">
+            {
+            PlayerData.map(player=> <Main HandleClick={HandleClick} key={player.id} player={player}></Main>)
+            }
+            </span>
+        </div>
+);
 }
 
 export default App;
