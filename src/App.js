@@ -1,48 +1,46 @@
-import React , {useEffect, useState} from "react"
+import React, { createContext, useState } from 'react';
+import SignUp from './component/SignUp/SignUp';
+import LogedIn from './component/LogedIn/LogedIn';
+import Home from './component/Home/Home'
 import "../node_modules/bootstrap/dist/css/bootstrap.css"
-import PlayerData from "./Component/PlayerData/PlayerData.json"
-import Main from "./Component/Main/Main"
-import Cart from './Component/Cart/Cart'
-import Table from './Component/Table/Table';
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import Card from './component/Card/Card';
+import Header from './component/Header/Header';
+import {VehicleDetails} from './component/vehicleDetails/VehicleDetails';
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+export const MyContext = createContext();
 
-function App() {
-const [player, setPlayer] = useState([]);
-const [selectedPlayer, setSelectedPlayer] = useState([])
-useEffect(() => {
-setPlayer(PlayerData);
-}, [])
-
-
-
-const HandleClick=(player)=>{
-  const newpl = [...selectedPlayer, player]
-  setSelectedPlayer(newpl);
-}
-
-
-
-
-return (
-        <div>
-          <ul>
-          {
-            //arrObj.map(pl=> <p>{pl.name}</p>)
-          }
-          </ul>
-          <Table selectedPlayer={selectedPlayer}></Table>
-            <Cart selectedPlayer={selectedPlayer}></Cart>
-            <span className="d-flex flex-wrap align-items-center">
-            {
-            PlayerData.map(player=> <Main HandleClick={HandleClick} key={player.id} player={player}></Main>)
-            }
-            </span>
-            <span className="">
-            {
-            PlayerData.map(player=> <li>{player.name}</li>)
-            }
-            </span>
-        </div>
-);
-}
+const App = () => {
+  const [search, setSearch] = useState({
+    from: '',
+    to: ''
+  })
+  const [loggedInUser, setLoggedInUser] = useState({})
+  return (
+    <MyContext.Provider value={[loggedInUser, setLoggedInUser,search, setSearch]}>
+      <Router>
+          <Header />
+          <Switch>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/signUp">
+              <SignUp/>
+            </Route>
+            <Route  path="/login">
+              <LogedIn />
+            </Route>
+            <PrivateRoute  path="/vehicle/:name">
+              <VehicleDetails />
+            </PrivateRoute>
+          </Switch>
+      </Router>
+      
+    </MyContext.Provider>
+  );
+};
 
 export default App;

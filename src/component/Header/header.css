@@ -1,0 +1,12 @@
+
+.page ul{
+    display: flex;
+    padding-left: 30px;
+
+}
+.page ul li{
+    list-style: none;
+    padding: 10px 20px;
+    color: red !important;
+}
+

@@ -1,0 +1,10 @@
+.firstrout img{
+    height: 50px;
+}
+.mystyle{
+    display: none;
+}
+.leaflet-container {
+    width: 100%;
+    height: 100vh;
+  }
