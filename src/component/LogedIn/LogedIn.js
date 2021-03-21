@@ -35,6 +35,12 @@ const LogedIn = () => {
         email:'',
         password:''
     })
+
+    //errormessege
+    const [isError, setIsError] = useState({
+        error:""
+    })
+
     const signInOnBlur = (e) =>{
         console.log("iyu")
         const newLoggedinuser = {...logedInUser};
@@ -42,17 +48,27 @@ const LogedIn = () => {
         setLogedInUser(newLoggedinuser);
         console.log(newLoggedinuser.email)
     }
+
+
     //signin with email & password
     const handleSignIn = (e) =>{
         firebase.auth().signInWithEmailAndPassword(logedInUser.email, logedInUser.password)
         .then((userCredential) => {
             var user = userCredential.user;
-            console.log("successfully loged in")
-            history.replace(from);
+            const email = user.email;
+            const email1 = user.email;
+            const name = email1.substring(0,email1.lastIndexOf("@"));
+            const userInfo = {name, email};
+            setLoggedInUser(userInfo)
+            console.log(userInfo)
+            history.replace(from); 
         })
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
+            const newErr = {isError}
+            newErr.error = errorMessage;
+            setIsError(newErr)
             console.log(errorCode, errorMessage)
         });
         e.preventDefault();
@@ -68,7 +84,7 @@ const LogedIn = () => {
     var token = credential.accessToken;
     const { displayName, email} = result.user;
     const userInfo = {name: displayName, email};
-    setLoggedInUser(userInfo)
+    setLoggedInUser(userInfo);
     history.replace(from);
     console.log(userInfo)
   }).catch((error) => {
@@ -86,26 +102,23 @@ const LogedIn = () => {
   .auth()
   .signInWithPopup(facebookProvider)
   .then((result) => {
-    /** @type {firebase.auth.OAuthCredential} */
-    var credential = result.credential;
-
-    // The signed-in user info.
+     var credential = result.credential;
     var user = result.user;
-
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const displayName = user.displayName;
+    const email = user.email
+    const userInfo = {name: displayName, email};
+    setLoggedInUser(userInfo);
     var accessToken = credential.accessToken;
-
+    console.log(userInfo);
+    history.replace(from);
     // ...
   })
   .catch((error) => {
-    // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // The email of the user's account used.
     var email = error.email;
-    // The firebase.auth.AuthCredential type that was used.
     var credential = error.credential;
-
+    console.log(errorMessage)
     // ...
   });
     }
@@ -122,8 +135,9 @@ const LogedIn = () => {
                     <input type="submit" value="Log in"/>
                 </form><br/>
                 <button onClick={googleSignIn}><FontAwesomeIcon icon={faGoogle} /> Continue with google</button> <br/>
-                <button onClick={handleFacebookLogin}><FontAwesomeIcon icon={faFacebook} /> Continue with google</button> <br/>
+                <button onClick={handleFacebookLogin}><FontAwesomeIcon icon={faFacebook} /> Continue with facebook</button> <br/>
                 <Link to='/signUp'>Create an Account</Link>
+                <p>{isError.error}</p>
             </div>
         </div>
     );

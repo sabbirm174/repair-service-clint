@@ -7,7 +7,7 @@ const Home = () => {
     const {vehicle} = Data;
     return (
         <main>
-            <div className='d-flex card-wrap flex-wrap justify-content-center pt-5'>
+            <div className='d-flex mt-15 card-wrap flex-wrap justify-content-center'>
                 {
                     vehicle.map((ride)=><Card ride={ride}></Card>) 
                 }

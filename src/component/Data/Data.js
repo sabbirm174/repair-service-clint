@@ -9,7 +9,7 @@ const Data={vehicle: [{
   },{
     "id": 3,
     "name": "Bus",
-    "img": "https://thumbs.dreamstime.com/b/black-interstate-bus-drawing-vector-illustration-160849153.jpg"
+    "img": "https://pngimg.com/uploads/bus/bus_PNG101204.png"
   },{
     "id": 4,
     "name": "Train",

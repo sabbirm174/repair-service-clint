@@ -4,7 +4,8 @@ import "firebase/auth";
 import "firebase/firestore";
 import firebaseConfig from '../../config.firebase';
 import { MyContext } from './../../App';
-
+import { Link } from 'react-router-dom';
+import './signUp.css'
 
 const SignUp = () => {
     const [loggedInUser, setLoggedInUser] = useContext(MyContext)
@@ -17,9 +18,12 @@ const SignUp = () => {
         isSignin: false,
         name: '',
         password:'',
+        confirmPassword:'',
         email:'',
         photo:'',
         error:'',
+        invalidEmail:'',
+        matchPassword:'',
         success:false
     })
 
@@ -28,16 +32,16 @@ const SignUp = () => {
         firebase.auth()
         .signInWithPopup(provider)
         .then((result) => {
-            var credential = result.credential;
+            const credential = result.credential;
 
-            var token = credential.accessToken;
-            var user = result.user;
+            const token = credential.accessToken;
+            const user = result.user;
             // ...
         }).catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            var email = error.email;
-            var credential = error.credential;
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.email;
+            const credential = error.credential;
         });
 
     }
@@ -50,56 +54,99 @@ const SignUp = () => {
         }
         if(e.target.name === 'password'){
             isFormValid = /\d{1}/.test(e.target.value) && (e.target.value.length > 6)
+            
         }
-        if(isFormValid){
+        if(e.target.name === 'confirmPassword'){
+            isFormValid = /\d{1}/.test(e.target.value) && (e.target.value.length > 6)
+        }
+            if(isFormValid){
             let newUserInfo = {...user};
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
         }
+
+        
     }
+
+
+
+
+
 
     // sign up with email and password
     const handleSubmit = (e) =>{
-        console.log(user.email, user.password)
-        if(user.email && user.password){
-            
-            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-            .then((userCredential) => {
-                var user = userCredential.user;
+        let newError = {...user}
+
+        if(user.email){
+            // remove success message for next time sign up
+            const newError = {...user}
+            newError.success = false;
+            setUser(newError);
+
+            const isNotMatched = {...user};
+            isNotMatched.matchPassword = ""
+            setUser(isNotMatched);
+
+            const isNotEmail = {...user};
+            isNotEmail.invalidEmail = "";
+            setUser(isNotEmail);
+
+            if(user.password === user.confirmPassword){
+
+                const isNotEmail = {...user};
+                isNotEmail.invalidEmail = "";
+                setUser(isNotEmail);
+
+                firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+                .then((userCredential) => {
+                const user = userCredential.user;
                 const newError = {...user}
                 newError.error ='';
                 newError.success = true;
                 setUser(newError);
             })
             .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
+                const errorCode = error.code;
+                const errorMessage = error.message;
                 const newError = {...user}
                 newError.error = errorMessage;
                 newError.success = false;
                 setUser(newError);
             });
-
+            }// password finish
+            else{
+                const isNotMatched = {...user};
+                isNotMatched.matchPassword = `password and confirm password did not matchd or <br/> invalid password please type at least 6 charecter and a numbur`
+                setUser(isNotMatched); 
+            }
+        }//email finish
+        else{
+            const isNotEmail = {...user};
+            isNotEmail.invalidEmail = `please enter a valid email address`
+            setUser(isNotEmail);
         }
         e.preventDefault()
     }
 
-    
+     
     
     return (
-        <div>
-
-            <form action="" onSubmit={handleSubmit}>
-                email: <br/><input type="text" name='email' onBlur={handleFormValidation} required/><br/>
-                name: <br/><input type="text" name='name' onBlur={handleFormValidation} required/><br/>
-                password: <br/><input type="password" name='password' onBlur={handleFormValidation} required/><br/>
-                <input type="submit"/>
-            </form>
-            <button onClick={googleSubmit}>google</button>
-            <p style={{color:"red"}}>{user.error}</p>
-            {user.success && <p style={{color:'green'}}>user created successfully</p>}
-
-            
+        <div className='d-flex height justify-content-center align-items-center'>
+            <div className= 'cu-border'>
+                <form action="" onSubmit={handleSubmit}>
+                    <br/><input type="text" placeholder="name" name='name' onBlur={handleFormValidation} required/><br/>
+                    <br/><input type="text" placeholder="email" name='email' onBlur={handleFormValidation} required/><br/>
+                    <br/><input type="password" placeholder="password" name='password' onBlur={handleFormValidation} required/><br/>
+                    <br/><input type="password" placeholder="confirm password" name='confirmPassword' onBlur={handleFormValidation} required/><br/>
+                    <input className='btn btn-primary' type="submit"/>
+                </form>
+                <button className='btn btn-primary'onClick={googleSubmit}>google</button>
+                <p style={{color:"red"}}>{user.error}</p>
+                <Link to="/login">Log in</Link>
+                {user.success && <p style={{color:'green'}}>user created successfully</p> }
+                {<p style={{color:"red"}}>{user.matchPassword}</p>}
+                {<p style={{color:"red"}}>{user.invalidEmail}</p>}
+            </div>
         </div>
     );
 };

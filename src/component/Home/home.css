@@ -4,10 +4,11 @@ main{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
 }
 
-.card-wrap{
-    
+.mt-15{
+   padding-top: 15rem; 
 }
 
 
