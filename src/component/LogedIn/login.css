@@ -3,6 +3,29 @@
     height: 80vh;
 }
 .login-form{
-    border: 2px solid gray;
+    border: 1.2px solid gray;
     padding: 30px;
+    width: 50vh;
+    border-radius: 5px;
 }
+.login-form-wraper .login-form form input{
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #c4c4c4;
+}
+.login-form-wraper .login-form form input:focus{
+    outline: none;
+}
+.login-form-wraper .social-btn button{
+    width: 100%;
+    margin: 10px 0;
+    color: honeydew;
+    font-weight: 700;
+}
+
+
+
+
+
+
+

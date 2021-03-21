@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import './signUp.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGoogle } from "@fortawesome/free-brands-svg-icons"
-import { faFacebook } from "@fortawesome/free-brands-svg-icons"
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons"
 
 
 const SignUp = () => {
@@ -163,8 +163,8 @@ const SignUp = () => {
 
                 <div className="text-center social-btn">
                     <h6>or, sign in with</h6>
-                    <button className="btn btn-primary" onClick={googleSignIn}><FontAwesomeIcon className="fontawsome" icon={faGoogle} /> Continue with google</button><br/>
-                    <button className="btn btn-primary" onClick={handleFacebookLogin}><FontAwesomeIcon className="fontawsome" icon={faFacebook} /> Continue with facebook</button>
+                    <button className="btn btn-warning" onClick={googleSignIn}><FontAwesomeIcon className="fontawsome" icon={faGoogle} /> Continue with google</button><br/>
+                    <button className="btn btn-primary" onClick={handleFacebookLogin}><FontAwesomeIcon className="fontawsome" icon={faFacebookF} /> Continue with facebook</button>
                 </div>
 
                 

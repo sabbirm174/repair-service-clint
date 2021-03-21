@@ -127,17 +127,20 @@ const LogedIn = () => {
     return (
         <div className="login-form-wraper d-flex align-items-center justify-content-center">
             <div className="login-form">
+                <h2>Log in</h2>
                 <form action="" onSubmit={handleSignIn}>
-                    email:<br/>
-                    <input type="email" placeholder='enter your email' onBlur={signInOnBlur} name='email'/><br/><br/>
-                    password:<br/>
-                    <input type="password" placeholder='enter your password' onBlur={signInOnBlur} name='password'/><br/><br/>
-                    <input type="submit" value="Log in"/>
+                    <br/>
+                    <input type="email" placeholder='Enter your email' onBlur={signInOnBlur} name='email'/><br/><br/>
+                    <br/>
+                    <input type="password" placeholder='Enter your password' onBlur={signInOnBlur} name='password'/><br/><br/>
+                    <input className="btn btn-primary" type="submit" value="Log in"/>
                 </form><br/>
-                <button onClick={googleSignIn}><FontAwesomeIcon icon={faGoogle} /> Continue with google</button> <br/>
-                <button onClick={handleFacebookLogin}><FontAwesomeIcon icon={faFacebook} /> Continue with facebook</button> <br/>
-                <Link to='/signUp'>Create an Account</Link>
-                <p>{isError.error}</p>
+                <div className="social-btn">
+                    <button className="btn btn-warning" onClick={googleSignIn}><FontAwesomeIcon icon={faGoogle} /> Continue with google</button> <br/>
+                    <button className="btn btn-primary" onClick={handleFacebookLogin}><FontAwesomeIcon icon={faFacebook} /> Continue with facebook</button> <br/>
+                    <Link to='/signUp'>Create an Account</Link>
+                    <p>{isError.error}</p>
+                </div>
             </div>
         </div>
     );

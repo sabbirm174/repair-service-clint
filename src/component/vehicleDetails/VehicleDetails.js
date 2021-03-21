@@ -37,23 +37,31 @@ export const VehicleDetails = (props) => {
                 <div className="row">
                     <div className="col-md-3 firstrout">
                         
-                        {show ? 
-                        <form action="" >
-                            <input type="text" name='from' onBlur={handleOnBlur}/><br/>
-                            <input type="text" name='to' onBlur={handleOnBlur}/><br/>
-                            <button onClick={()=> setShow(false)}>search</button>
-                        </form>
+                        { show ? 
+                        <div className="form-wrapper">
+                            <form action="" >
+                                <h6>Pick From</h6>
+                                <input type="text" name='from' onBlur={handleOnBlur}/><br/>
+                                <h6>Pick To</h6>
+                                <input type="text" name='to' onBlur={handleOnBlur}/><br/>
+                                <button className="btn btn-primary" onClick={()=> setShow(false)}>Search</button>
+                            </form>
+                        </div>
                         :
                         <div id="hidden" >
-                            <p>from:{search.from}</p>
-                            <p>to:{search.to}</p>
-                            <div className='d-flex align-items-center justify-content-between'>
+                            <div className="destination">
+                                <p>{search.from}</p>
+                                <p>to</p>
+                                <p>{search.to}</p>
+                            </div>
+                            
+                            <div className='d-flex destination-description align-items-center justify-content-between'>
                                 <img src={vehicles.img} alt=""/> {vehicles.name} 4 <span>$67</span>
                             </div>
-                            <div className='d-flex align-items-center justify-content-between'>
+                            <div className='d-flex destination-description align-items-center justify-content-between'>
                                 <img src={vehicles.img} alt=""/> {vehicles.name} 4 <span>$67</span>
                             </div>
-                            <div className='d-flex align-items-center justify-content-between'>
+                            <div className='d-flex destination-description align-items-center justify-content-between'>
                                 <img src={vehicles.img} alt=""/> {vehicles.name} 4 <span>$67</span>
                             </div>
                         </div>
@@ -61,17 +69,17 @@ export const VehicleDetails = (props) => {
 
                     </div>
                     <div className="col-md-9 map">
-                    <MapContainer
-  className="markercluster-map"
-  center={[51.0, 19.0]}
-  zoom={4}
-  maxZoom={18}
->
-  <TileLayer
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  />
-</MapContainer>
+                        <MapContainer
+                            className="markercluster-map"
+                            center={[51.0, 19.0]}
+                            zoom={4}
+                            maxZoom={18}
+                         >
+                        <TileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        />
+                        </MapContainer>
                     </div>
                 </div>
             </div>

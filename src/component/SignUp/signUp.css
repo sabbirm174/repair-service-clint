@@ -6,7 +6,7 @@
     border: 1.2px solid #c4c4c4;
     padding: 30px;
     border-radius: 5px;
-    width: 500px;
+    width: 50vh;
 }
 .cu-border form input{
     border: none;
@@ -23,10 +23,13 @@
 .cu-border .social-btn button{
     width: 100%;
     margin: 10px 0;
+    color: honeydew;
+    font-weight: 700;
 }
 .cu-border .social-btn .fontawsome{
     font-size: 20px;
     margin-right: 10px;
+    
 }
 
 

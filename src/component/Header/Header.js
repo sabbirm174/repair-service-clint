@@ -3,6 +3,8 @@ import './header.css'
 import { Link } from 'react-router-dom';
 import { MyContext } from './../../App';
 import './header.css'
+import { Navbar,Nav,NavDropdown,Form,FormControl,Button } from 'react-bootstrap';
+
 const Header = () => {
 
   const [loggedInUser] = useContext(MyContext)
@@ -10,7 +12,30 @@ const Header = () => {
 
 
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <Navbar className="container" expand="lg">
+  <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="ml-auto">
+      <Nav.Link><Link to="/home"> Home</Link></Nav.Link>
+      <Nav.Link href="#link"><Link to="/home"> Destination</Link></Nav.Link>
+      <Nav.Link href="#link"><Link to="/home"> Blog</Link></Nav.Link>
+      <Nav.Link href="#link"><Link to="/home"> Contact</Link></Nav.Link>
+      
+    </Nav>
+    <Form inline>
+      {loggedInUser.email ? loggedInUser.name : <Link className="btn btn-primary" to='/login'>Log in</Link>}
+    </Form>
+  </Navbar.Collapse>
+</Navbar>
+    );
+};
+
+export default Header;
+
+
+
+{/* <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <Link class="navbar-brand" to="/">Tufani Riders</Link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -32,11 +57,7 @@ const Header = () => {
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      {loggedInUser.email ? loggedInUser.name : <Link to='/login'>Log in</Link>}
+      {loggedInUser.email ? loggedInUser.name : <Link className="btn btn-primary" to='/login'>Log in</Link>}
     </form>
   </div>
-</nav>
-    );
-};
-
-export default Header;
+</nav> */}
