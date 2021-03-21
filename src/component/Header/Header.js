@@ -12,19 +12,19 @@ const Header = () => {
 
 
     return (
-      <Navbar className="container" expand="lg">
-  <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+      <Navbar className="container nav-cu" expand="lg">
+  <Navbar.Brand ><Link className='logo' to="/">Tufani Riders</Link></Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="ml-auto">
       <Nav.Link><Link to="/home"> Home</Link></Nav.Link>
-      <Nav.Link href="#link"><Link to="/home"> Destination</Link></Nav.Link>
-      <Nav.Link href="#link"><Link to="/home"> Blog</Link></Nav.Link>
-      <Nav.Link href="#link"><Link to="/home"> Contact</Link></Nav.Link>
+      <Nav.Link ><Link to="/home"> Destination</Link></Nav.Link>
+      <Nav.Link ><Link to="/home"> Blog</Link></Nav.Link>
+      <Nav.Link ><Link to="/home"> Contact</Link></Nav.Link>
       
     </Nav>
     <Form inline>
-      {loggedInUser.email ? loggedInUser.name : <Link className="btn btn-primary" to='/login'>Log in</Link>}
+      {loggedInUser.email ? <span>{loggedInUser.name}</span> : <Link className="btn log-in-btn btn-primary" to='/login'>Log in</Link>}
     </Form>
   </Navbar.Collapse>
 </Navbar>
