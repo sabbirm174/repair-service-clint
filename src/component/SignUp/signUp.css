@@ -1,8 +1,33 @@
-.height{
+.sign-up-wrapper{
     height: 80vh;
+
 }
 .cu-border{
-    border: 2px solid gray;
+    border: 1.2px solid #c4c4c4;
     padding: 30px;
     border-radius: 5px;
+    width: 500px;
 }
+.cu-border form input{
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #c4c4c4;
+}
+.cu-border form input:focus{
+    outline: none;
+}
+.cu-border form input.submit{
+    border: none;
+    margin: 10px 0;
+}
+.cu-border .social-btn button{
+    width: 100%;
+    margin: 10px 0;
+}
+.cu-border .social-btn .fontawsome{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+
+
