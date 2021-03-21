@@ -5,7 +5,8 @@ import "./vehicledetails.css"
 import { MyContext } from './../../App';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMale } from '@fortawesome/free-solid-svg-icons'
 
 
 export const VehicleDetails = (props) => {
@@ -41,9 +42,9 @@ export const VehicleDetails = (props) => {
                         <div className="form-wrapper">
                             <form action="" >
                                 <h6>Pick From</h6>
-                                <input type="text" name='from' onBlur={handleOnBlur}/><br/>
+                                <input type="text" required name='from' onBlur={handleOnBlur}/><br/>
                                 <h6>Pick To</h6>
-                                <input type="text" name='to' onBlur={handleOnBlur}/><br/>
+                                <input type="text" required name='to' onBlur={handleOnBlur}/><br/>
                                 <button className="btn btn-primary" onClick={()=> setShow(false)}>Search</button>
                             </form>
                         </div>
@@ -56,13 +57,13 @@ export const VehicleDetails = (props) => {
                             </div>
                             
                             <div className='d-flex destination-description align-items-center justify-content-between'>
-                                <img src={vehicles.img} alt=""/> {vehicles.name} 4 <span>$67</span>
+                                <img src={vehicles.img} alt=""/> {vehicles.name} <FontAwesomeIcon icon={faMale} /><span>{vehicles.sit}</span> <span>{vehicles.price}</span>
                             </div>
                             <div className='d-flex destination-description align-items-center justify-content-between'>
-                                <img src={vehicles.img} alt=""/> {vehicles.name} 4 <span>$67</span>
+                                <img src={vehicles.img} alt=""/> {vehicles.name} <FontAwesomeIcon icon={faMale} /><span>{vehicles.sit}</span> <span>{vehicles.price}</span>
                             </div>
                             <div className='d-flex destination-description align-items-center justify-content-between'>
-                                <img src={vehicles.img} alt=""/> {vehicles.name} 4 <span>$67</span>
+                                <img src={vehicles.img} alt=""/> {vehicles.name} <FontAwesomeIcon icon={faMale} /><span>{vehicles.sit}</span> <span>{vehicles.price}</span>
                             </div>
                         </div>
                         }
