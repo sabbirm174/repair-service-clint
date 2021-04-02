@@ -27,11 +27,11 @@ const SignIn = () => {
             var credential = result.credential;
             var token = credential.accessToken;
             var user = result.user;
-            const {displayName,email} = user;
-            const logedInUse = {userName:displayName,email}
+            const {displayName,email,photoURL} = user;
+            const logedInUse = {userName:displayName,email,photoURL}
             setLogedInUser(logedInUse);
             history.replace(from)
-            console.log('name',logedInUser)
+            console.log('name',user)
         }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;

@@ -23,7 +23,7 @@ const Header = () => {
       
     </Nav>
     <Form inline>
-      {logedInUser.email ? <span>{logedInUser.userName}</span> : <Link className="btn log-in-btn btn-warning" to='/login'>Log in</Link>} 
+      {logedInUser.email ? <img src={logedInUser.photoURL} alt={logedInUser.name}/> : <Link className="btn log-in-btn btn-warning" to='/signIn'>Log in</Link>} 
     </Form>
   </Navbar.Collapse>
         </div>

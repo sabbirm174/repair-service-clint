@@ -13,7 +13,7 @@ const DeleteProduct = () => {
     },[])
     const DeleteProducts =(id)=>{
         console.log(id)
-            fetch(`https://stormy-crag-38445.herokuapp.com/delete/${id}`,{
+        fetch(`https://stormy-crag-38445.herokuapp.com/delete/${id}`,{
                 method:'delete',
                 headers: {
                     'Content-type': 'application/json'
@@ -21,7 +21,13 @@ const DeleteProduct = () => {
             })
             .then(data=>console.log(data))
             .catch(err=>console.log(err))
+            
     }
+    const handleSort = () =>{
+        console.log("click me")
+    }
+    
+        
     return (
         <div>
             <div class="sidenav d-flex align-items-center">
@@ -31,10 +37,13 @@ const DeleteProduct = () => {
                 </div>
             </div>
             <div className="main">
+            
             <table class="table table-dark table-striped">
+                <button onClick={() => handleSort()}>delete</button>
                 <tr className="text-center">
                     <th scope="col">Product Name</th>
                     <th scope="col">Price</th>
+                    
                     <th scope="col">Weigght</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -44,7 +53,7 @@ const DeleteProduct = () => {
                         <th scope="col">{data.name}</th>
                         <th scope="col">{data.price}</th>
                         <th scope="col">{data.weight}</th>
-                        <th scope="col"><button onclick={()=>DeleteProducts(data._id)}>delete</button></th>
+                        <th scope="col"><button onClick={() => DeleteProducts(data._id)}>delete</button></th>
                     </tr>
                 )
             }
