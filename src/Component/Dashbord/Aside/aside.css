@@ -1,6 +1,19 @@
-.aside-container{
+
+.h-1000{
     height: 100vh;
+    background: #222;
 }
-.aside-container a{
+.aside-container{
+    margin-top: 50px;
+}
+.aside-container a {
     color: #222 !important;
+    font-size: 18px;
+    margin: 1px 0 !important;
+    background: #ddd;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
 }

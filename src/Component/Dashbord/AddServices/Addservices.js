@@ -34,13 +34,17 @@ const AddServices = () => {
             <div className="row">
                     <Aside></Aside>
                     <div className="col-md-10">
+
+                    <div className='d-flex h-100 align-items-center justify-content-center'>
+            <div className='form-wrapper'>
+                <h3>Add Service</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Title</label><br/>
+                        <label for="exampleInputEmail1">Service Title</label><br/>
                         <input name="title" required ref={register} />
                     </div> 
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Description</label><br/>
+                        <label for="exampleInputEmail1">Service Description</label><br/>
                         <input name="description"  required ref={register} />
                     </div>
                     <div className="form-group">
@@ -48,6 +52,8 @@ const AddServices = () => {
                     </div>
                     <input className='btn btn-primary' type="submit" />       
                     </form>
+                </div>
+                </div>
                 </div>
             </div>
         </div>

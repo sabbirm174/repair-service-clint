@@ -35,24 +35,31 @@ const Review = () => {
             <div className="row">
                     <Aside></Aside>
                     <div className="col-md-10">
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className='d-flex h-100 align-items-center justify-content-center'>
+                    <div className='form-wrapper'>
+                        <h3>Add Your Opinion</h3>
+                    <form  onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Name</label><br/>
+                        <label for="exampleInputEmail1">Your Name</label><br/>
                         <input name="name" required ref={register} />
                     </div> 
+                    
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Description</label><br/>
-                        <input name="description"  required ref={register} />
-                    </div>
-                    <div className="form-group">
-                        <label for="exampleInputEmail1">Designation</label><br/>
+                        <label for="exampleInputEmail1">Your Designation</label><br/>
                         <input name="designation"  required ref={register} />
                     </div>
                     <div className="form-group">
+                        <label for="exampleInputEmail1">What you Want To Say</label><br/>
+                        <input name="description"  required ref={register} />
+                    </div>
+                    <div className="form-group">
+                    <label for="exampleInputEmail1">Add Your Image Here</label>
                         <input type='file' onChange={handleImgChange} required  />
                     </div>
                     <input className='btn btn-primary' type="submit" />       
                     </form>
+                </div>
+                </div>
                 </div>
             </div>
         </div>

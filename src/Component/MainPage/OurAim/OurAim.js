@@ -19,7 +19,7 @@ const OurAim = () => {
             <div class="boxBorda">
                 <div class="boxData">
                   <div class="diaemes"> 30/jan </div>
-                  <div class="ano"> 2016 </div>
+                  <div class="ano"> 2020 </div>
                 </div>
                 
                 <div class="boxTexto"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat?  </div>
@@ -31,7 +31,7 @@ const OurAim = () => {
           <div class="boxBorda">
                 <div class="boxData">
                   <div class="diaemes"> 30/jan </div>
-                  <div class="ano"> 2016 </div>
+                  <div class="ano"> 2020 </div>
                 </div>
                 
                 <div class="boxTexto"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat?  </div>

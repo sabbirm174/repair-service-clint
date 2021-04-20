@@ -7,19 +7,18 @@ import Footer from './Footer/Footer';
 import Testimonial from './Testimonial/Testimonial';
 import OurAim from './OurAim/OurAim';
 import BlogPost from './BlogPost/BlogPost';
+import Heading from './Heading/Heading';
+import OurTeam from './OurTeam/OurTeam';
 
 
 const MainPage = () => {
     return (
         <div>
             
-            <Header></Header>
-            <Title title={'Our Services'} text1={"Lorem ipsum, dolor sit amet consectetur adipisicing elit."}></Title>
+             <Header></Header>
             <OurServices></OurServices>
-            <Title title={'Our Clint Say'} text1={"Lorem ipsum, dolor sit amet consectetur adipisicing elit."}></Title>
+            <OurTeam></OurTeam>
             <Testimonial></Testimonial>
-            <Title title={'Our Aim'} text1={"Lorem ipsum, dolor sit amet consectetur adipisicing elit."}></Title>
-            <OurAim></OurAim>
             <BlogPost></BlogPost>
             <Footer></Footer>
         </div>

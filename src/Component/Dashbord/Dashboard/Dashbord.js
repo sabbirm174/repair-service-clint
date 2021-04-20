@@ -9,7 +9,7 @@ import { MyContext } from '../../../App';
 import AddServices from './../AddServices/Addservices';
 
 const Dashbord = () => {
-    const [singleServiceBooking, setSingleServiceBooking] = useContext(MyContext);
+    
     const [singleService, setSingleService] = useState([])
     useEffect(()=>{
         fetch('https://stormy-crag-38445.herokuapp.com/allservice')
@@ -22,8 +22,9 @@ const Dashbord = () => {
     },[])
 
     let {id} = useParams();
-    const service = singleService.find(se=> se._id === id)
-    
+    const sservice = singleService.find(se=> se._id === id)
+    const service = sservice && sservice.title
+    console.log(service)
     return (
         <div className="container-fluid">
             <div className='row'>

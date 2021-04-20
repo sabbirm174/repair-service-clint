@@ -31,6 +31,7 @@ const Login = () => {
             const {displayName,email,photoURL} = user;
             const logedInUse = {userName:displayName,email,photoURL}
             setLoggedInUser(logedInUse);
+            setUserToken()
             history.replace(from)
             console.log('name',user)
         }).catch((error) => {
@@ -41,6 +42,15 @@ const Login = () => {
             console.log(errorMessage)
         });
     }
+
+    const setUserToken = ()=>{
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+            sessionStorage.setItem('token', idToken)
+          }).catch(function(error) {
+            // Handle error
+          });
+    }
+
     return (
         <div className="mt-5 sign-in-wrapper d-flex align-items-center justify-content-center">
             <div>

@@ -4,3 +4,15 @@ form{
 .btn a{
     color: #fff !important;
 }
+.form-wrapper{
+    border: 3px solid #ddd;
+    padding: 20px;
+    border-radius: 7px;
+}
+h3{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+section{
+    margin: 5rem 0;
+}

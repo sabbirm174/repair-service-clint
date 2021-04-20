@@ -1,0 +1,14 @@
+.carousel-item img{
+    height: 600px;
+}
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 228px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}

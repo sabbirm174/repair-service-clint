@@ -1,7 +1,7 @@
 import React,{useContext,useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { MyContext } from './../../../App';
-
+import './aside.css'
 const Aside = ({service}) => {
     const [loggedInUsser,setLoggedInUser] =useContext(MyContext)
     const [isadmin, setIsAdmin] = useState(false)
@@ -19,8 +19,8 @@ const Aside = ({service}) => {
     },[])
 
     return (
-        <div className="col-md-2 aside-container d-flex align-items-center">
-            <div>
+        <div className="col-md-2 h-1000 ">
+            <div className='aside-container'>
             <Link to='/'>Home</Link><br/>
             <Link to='/booknow'>book now</Link><br/>
             <Link to='/bookinglist'>booking list</Link><br/>

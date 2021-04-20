@@ -14,10 +14,14 @@ const ManageServiceCard = ({deletingservice}) => {
         console.log(id)
     }
     return (
-        <div>
-            <p>{deletingservice._id}</p>
-            <button onClick={()=>handleDeleteService(deletingservice._id)}>delete</button>
-        </div>
+            <tbody>
+    <tr>
+      <td>{deletingservice.title}</td>
+      <td>{deletingservice._id}</td>
+      <td><button onClick={()=>handleDeleteService(deletingservice._id)}>Delete</button></td>
+    </tr>
+  </tbody> 
+            
     );
 };
 

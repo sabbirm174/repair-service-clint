@@ -18,9 +18,18 @@ const ManageService = () => {
                 <div className="row">
                     <Aside></Aside>
                     <div className="col-md-10">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                            <th scope="col">title</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Status</th>
+                            </tr>
+                        </thead>
                         {
                             manageData.map(data => <ManageServiceCard deletingservice={data} key={data._id}></ManageServiceCard>)
                         }
+                        </table>
                     </div>
                 </div>
             </div>

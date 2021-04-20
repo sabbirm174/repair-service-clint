@@ -1,6 +1,7 @@
 import React,{useEffect,useState,useContext} from 'react';
 import { MyContext } from './../../../App';
 import Aside from './../Aside/Aside';
+import BookingListCard from './BookingListCard';
 
 
 const BookingList = () => {
@@ -22,9 +23,19 @@ const BookingList = () => {
                 <div className="row">
                     <Aside></Aside>
                     <div className="col-md-10">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Service Name</th>
+                            <th scope="col">Status</th>
+                            </tr>
+                        </thead>
                         {
-                            bookingList.map(book=> <p>{book.name}</p>)
+                            bookingList.map(book=> <BookingListCard book={book}></BookingListCard>)
                         }
+                    </table>
                     </div>
                 </div>
             </div>

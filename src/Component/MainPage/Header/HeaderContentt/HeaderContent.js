@@ -1,5 +1,4 @@
 import React from 'react';
-import headerimg from '../../../../img/header.png'
 import { Link } from 'react-router-dom';
 
 
@@ -15,7 +14,7 @@ const HeaderContent = () => {
 
                 </div>
                 <div className="col-md-7">
-                    <img className='img-fluid' src={headerimg} alt=""/>
+                    <img className='img-fluid'  alt=""/>
                 </div>
             </div>
         </div>

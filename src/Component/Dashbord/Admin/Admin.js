@@ -30,12 +30,23 @@ const Admin = () => {
             <div className="row">
                 <Aside></Aside>
                 <div className="col-md-10">
+                <div className='d-flex h-100 align-items-center justify-content-center'>
+                    <div className='form-wrapper'><h3>Add Admin</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                <input name="name" required ref={register} />
-                <input name="email" type='email' required ref={register} />
-                <input type='file' onChange={handleImgChange} required  />
-                <input type="submit" />
-            </form>
+                        <div className="form-group">
+                            <label >Name</label>
+                            <input className='form-control' name="name" required ref={register} />
+                        </div>
+                        <div className="form-group">
+                            <label >Email</label>
+                            <input className='form-control' name="email" required ref={register} />
+                        </div>
+                        
+                        <input type='file' onChange={handleImgChange} required  />
+                        <input type="submit" />
+                    </form>
+                </div>
+                </div>
                 </div>
             </div>
         </div>

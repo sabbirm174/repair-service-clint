@@ -1,4 +1,8 @@
 .label{margin-right:5px; font-family:Arial;}
+.blog-bg{
+	background-color: #eee;
+	padding: 2rem 0;
+}
 
 .post-grid{padding: 5px; transition:all 0.2s ease; height:300px; overflow:hidden; position:relative; border:1px solid #E1E1E1;}
 	.post-grid .title{ font-size:18px; padding:7px 0; }

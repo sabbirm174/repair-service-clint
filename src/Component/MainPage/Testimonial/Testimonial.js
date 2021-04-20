@@ -2,6 +2,7 @@ import React, { Component,useEffect,useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import './testimonial.css'
+import Heading from './../Heading/Heading';
 
 const Testimonial = () => {
 
@@ -17,7 +18,8 @@ const Testimonial = () => {
 
 
     return (
-        <div className="container ">
+        <section className="container ">
+          <Heading title={'What Our Client Say'}></Heading>
             <Carousel
           showArrows={true}
           infiniteLoop={true}
@@ -42,7 +44,7 @@ const Testimonial = () => {
           }
           
         </Carousel>
-        </div>
+        </section>
       );
 };
 

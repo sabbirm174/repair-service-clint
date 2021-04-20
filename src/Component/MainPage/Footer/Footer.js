@@ -1,5 +1,6 @@
 import React from 'react';
 import './footer.css'
+import { Redirect } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -33,7 +34,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div class="footer-right col-md-4 col-sm-6">
-                    <h2> Company<span> logo</span></h2>
+                    <h2> Repaier<span> Solution</span></h2>
                     <p class="menu">
                     <a href="#"> Home</a> |
                     <a href="#"> About</a> |
@@ -42,7 +43,7 @@ const Footer = () => {
                     <a href="#"> News</a> |
                     <a href="#"> Contact</a>
                     </p>
-                    <p class="name"> Company Name &copy; 2016</p>
+                    <p class="name"> Company Name &copy; 2021</p>
                 </div>
             </footer>
         </div>
