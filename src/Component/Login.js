@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from './firebase.config';
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGoogle } from "@fortawesome/free-brands-svg-icons"
+import { useHistory, useLocation } from 'react-router-dom';
+import firebaseConfig from './firebase.Config';
+import { MyContext } from './../App';
 
 
 const Login = () => {
+    
+    let history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+    const [loggedInUsser,setLoggedInUser] = useContext(MyContext);
 
     if(firebase.apps.length === 0){
         firebase.initializeApp(firebaseConfig);
@@ -19,6 +29,9 @@ const Login = () => {
             var token = credential.accessToken;
             var user = result.user;
             const {displayName,email,photoURL} = user;
+            const logedInUse = {userName:displayName,email,photoURL}
+            setLoggedInUser(logedInUse);
+            history.replace(from)
             console.log('name',user)
         }).catch((error) => {
             var errorCode = error.code;
@@ -28,11 +41,10 @@ const Login = () => {
             console.log(errorMessage)
         });
     }
-
     return (
         <div className="mt-5 sign-in-wrapper d-flex align-items-center justify-content-center">
             <div>
-                <button className='btn btn-primary' onClick={handleGoogleSignIn}> Continue with Google</button>
+                <button className='btn btn-primary' onClick={handleGoogleSignIn}><FontAwesomeIcon icon={faGoogle} /> Continue with Google</button>
             </div>
         </div>
     );

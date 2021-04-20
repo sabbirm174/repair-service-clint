@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React,{useState} from 'react';
 import { useForm } from "react-hook-form";
+import Aside from '../Aside/Aside';
 const Admin = () => {
     const [adminImg, setAdminImg] = useState(null)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -10,7 +11,7 @@ const Admin = () => {
           email:data.email,
           adminImg
       }
-      axios.post('http://localhost:2000/addadmin',adminInfo)
+      axios.post('https://stormy-crag-38445.herokuapp.com/addadmin',adminInfo)
       .then(res=> res.json())
       .catch(err=> console.log(err))
       console.log(adminInfo)
@@ -25,16 +26,18 @@ const Admin = () => {
         .catch(err=>console.log(err))
     }
     return (
-
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-      
-            <input name="name" required ref={register} />
-            <input name="email" type='email' required ref={register} />
-            <input type='file' onChange={handleImgChange} required  />
-      
-      <input type="submit" />
-    </form>
+        <div className="container-fluid">
+            <div className="row">
+                <Aside></Aside>
+                <div className="col-md-10">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                <input name="name" required ref={register} />
+                <input name="email" type='email' required ref={register} />
+                <input type='file' onChange={handleImgChange} required  />
+                <input type="submit" />
+            </form>
+                </div>
+            </div>
         </div>
     );
 };

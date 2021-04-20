@@ -8,8 +8,6 @@ const DashbordContent = () => {
         <div className="container">
             <div className='col-md-10'>
                 <BookNow></BookNow>
-                {/* <BookingList></BookingList>
-                <Review></Review> */}
             </div>
         </div>
     );

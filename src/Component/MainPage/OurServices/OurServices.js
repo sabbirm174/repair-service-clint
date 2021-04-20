@@ -4,7 +4,7 @@ import ServiceCard from './ServiceCard';
 const OurServices = () => {
     const [servicesinfo,setServicesInfo] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:2000/allservice')
+        fetch('https://stormy-crag-38445.herokuapp.com/allservice')
         .then(res=>res.json())
         .then(data => {
             setServicesInfo(data)

@@ -1,16 +1,20 @@
 import axios from 'axios';
 import React,{useState} from 'react';
 import { useForm } from "react-hook-form";
+import Aside from '../Aside/Aside';
+
+
+
 const AddServices = () => {
     const [serviceImg, setServiceImg] = useState(null)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit = data => {
       const serviceInfo = {
-          name: data.name,
-          email:data.email,
+          title: data.title,
+          description:data.description,
           serviceImg
       }
-      axios.post('http://localhost:2000/addservices',serviceInfo)
+      axios.post('https://stormy-crag-38445.herokuapp.com/addservices',serviceInfo)
       .then(res=> res.json())
       .catch(err=> console.log(err))
       console.log(serviceInfo)
@@ -26,15 +30,26 @@ const AddServices = () => {
     }
     return (
 
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-      
-            <input name="name" required ref={register} />
-            <input name="email" type='email' required ref={register} />
-            <input type='file' onChange={handleImgChange} required  />
-      
-      <input type="submit" />
-    </form>
+        <div className="container-fluid">
+            <div className="row">
+                    <Aside></Aside>
+                    <div className="col-md-10">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-group">
+                        <label for="exampleInputEmail1">Title</label><br/>
+                        <input name="title" required ref={register} />
+                    </div> 
+                    <div className="form-group">
+                        <label for="exampleInputEmail1">Description</label><br/>
+                        <input name="description"  required ref={register} />
+                    </div>
+                    <div className="form-group">
+                        <input type='file' onChange={handleImgChange} required  />
+                    </div>
+                    <input className='btn btn-primary' type="submit" />       
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };
